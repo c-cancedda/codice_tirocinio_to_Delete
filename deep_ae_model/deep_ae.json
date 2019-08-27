@@ -1,0 +1,336 @@
+{
+  "class_name": "Model",
+  "config": {
+    "name": "model_1",
+    "layers": [
+      {
+        "name": "UserRating",
+        "class_name": "InputLayer",
+        "config": {
+          "batch_input_shape": [
+            null,
+            2653
+          ],
+          "dtype": "float32",
+          "sparse": false,
+          "name": "UserRating"
+        },
+        "inbound_nodes": []
+      },
+      {
+        "name": "EncLayer1",
+        "class_name": "Dense",
+        "config": {
+          "name": "EncLayer1",
+          "trainable": true,
+          "dtype": "float32",
+          "units": 1024,
+          "activation": "selu",
+          "use_bias": true,
+          "kernel_initializer": {
+            "class_name": "GlorotUniform",
+            "config": {
+              "seed": null,
+              "dtype": "float32"
+            }
+          },
+          "bias_initializer": {
+            "class_name": "Zeros",
+            "config": {
+              "dtype": "float32"
+            }
+          },
+          "kernel_regularizer": {
+            "class_name": "L1L2",
+            "config": {
+              "l1": 0,
+              "l2": 0.0010000000474974513
+            }
+          },
+          "bias_regularizer": null,
+          "activity_regularizer": null,
+          "kernel_constraint": null,
+          "bias_constraint": null
+        },
+        "inbound_nodes": [
+          [
+            [
+              "UserRating",
+              0,
+              0,
+              {}
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "EncLayer2",
+        "class_name": "Dense",
+        "config": {
+          "name": "EncLayer2",
+          "trainable": true,
+          "dtype": "float32",
+          "units": 512,
+          "activation": "selu",
+          "use_bias": true,
+          "kernel_initializer": {
+            "class_name": "GlorotUniform",
+            "config": {
+              "seed": null,
+              "dtype": "float32"
+            }
+          },
+          "bias_initializer": {
+            "class_name": "Zeros",
+            "config": {
+              "dtype": "float32"
+            }
+          },
+          "kernel_regularizer": {
+            "class_name": "L1L2",
+            "config": {
+              "l1": 0,
+              "l2": 0.0010000000474974513
+            }
+          },
+          "bias_regularizer": null,
+          "activity_regularizer": null,
+          "kernel_constraint": null,
+          "bias_constraint": null
+        },
+        "inbound_nodes": [
+          [
+            [
+              "EncLayer1",
+              0,
+              0,
+              {}
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "EncLayer3",
+        "class_name": "Dense",
+        "config": {
+          "name": "EncLayer3",
+          "trainable": true,
+          "dtype": "float32",
+          "units": 256,
+          "activation": "selu",
+          "use_bias": true,
+          "kernel_initializer": {
+            "class_name": "GlorotUniform",
+            "config": {
+              "seed": null,
+              "dtype": "float32"
+            }
+          },
+          "bias_initializer": {
+            "class_name": "Zeros",
+            "config": {
+              "dtype": "float32"
+            }
+          },
+          "kernel_regularizer": {
+            "class_name": "L1L2",
+            "config": {
+              "l1": 0,
+              "l2": 0.0010000000474974513
+            }
+          },
+          "bias_regularizer": null,
+          "activity_regularizer": null,
+          "kernel_constraint": null,
+          "bias_constraint": null
+        },
+        "inbound_nodes": [
+          [
+            [
+              "EncLayer2",
+              0,
+              0,
+              {}
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "dropout_1",
+        "class_name": "Dropout",
+        "config": {
+          "name": "dropout_1",
+          "trainable": true,
+          "dtype": "float32",
+          "rate": 0.8,
+          "noise_shape": null,
+          "seed": null
+        },
+        "inbound_nodes": [
+          [
+            [
+              "EncLayer3",
+              0,
+              0,
+              {}
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "DecLayer3",
+        "class_name": "Dense",
+        "config": {
+          "name": "DecLayer3",
+          "trainable": true,
+          "dtype": "float32",
+          "units": 512,
+          "activation": "selu",
+          "use_bias": true,
+          "kernel_initializer": {
+            "class_name": "GlorotUniform",
+            "config": {
+              "seed": null,
+              "dtype": "float32"
+            }
+          },
+          "bias_initializer": {
+            "class_name": "Zeros",
+            "config": {
+              "dtype": "float32"
+            }
+          },
+          "kernel_regularizer": {
+            "class_name": "L1L2",
+            "config": {
+              "l1": 0,
+              "l2": 0.0010000000474974513
+            }
+          },
+          "bias_regularizer": null,
+          "activity_regularizer": null,
+          "kernel_constraint": null,
+          "bias_constraint": null
+        },
+        "inbound_nodes": [
+          [
+            [
+              "dropout_1",
+              0,
+              0,
+              {}
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "DecLayer2",
+        "class_name": "Dense",
+        "config": {
+          "name": "DecLayer2",
+          "trainable": true,
+          "dtype": "float32",
+          "units": 1024,
+          "activation": "selu",
+          "use_bias": true,
+          "kernel_initializer": {
+            "class_name": "GlorotUniform",
+            "config": {
+              "seed": null,
+              "dtype": "float32"
+            }
+          },
+          "bias_initializer": {
+            "class_name": "Zeros",
+            "config": {
+              "dtype": "float32"
+            }
+          },
+          "kernel_regularizer": {
+            "class_name": "L1L2",
+            "config": {
+              "l1": 0,
+              "l2": 0.0010000000474974513
+            }
+          },
+          "bias_regularizer": null,
+          "activity_regularizer": null,
+          "kernel_constraint": null,
+          "bias_constraint": null
+        },
+        "inbound_nodes": [
+          [
+            [
+              "DecLayer3",
+              0,
+              0,
+              {}
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "UserScorePred",
+        "class_name": "Dense",
+        "config": {
+          "name": "UserScorePred",
+          "trainable": true,
+          "dtype": "float32",
+          "units": 2653,
+          "activation": "relu",
+          "use_bias": true,
+          "kernel_initializer": {
+            "class_name": "GlorotUniform",
+            "config": {
+              "seed": null,
+              "dtype": "float32"
+            }
+          },
+          "bias_initializer": {
+            "class_name": "Zeros",
+            "config": {
+              "dtype": "float32"
+            }
+          },
+          "kernel_regularizer": {
+            "class_name": "L1L2",
+            "config": {
+              "l1": 0,
+              "l2": 0.0010000000474974513
+            }
+          },
+          "bias_regularizer": null,
+          "activity_regularizer": null,
+          "kernel_constraint": null,
+          "bias_constraint": null
+        },
+        "inbound_nodes": [
+          [
+            [
+              "DecLayer2",
+              0,
+              0,
+              {}
+            ]
+          ]
+        ]
+      }
+    ],
+    "input_layers": [
+      [
+        "UserRating",
+        0,
+        0
+      ]
+    ],
+    "output_layers": [
+      [
+        "UserScorePred",
+        0,
+        0
+      ]
+    ]
+  },
+  "keras_version": "2.2.4-tf",
+  "backend": "tensorflow"
+}
